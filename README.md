@@ -1,50 +1,93 @@
-# Remix IDE Blank Template
+# G-Nigeria MultiSig
 
-Welcome to your new **Remix IDE Blank Workspace**!
+## Overview
 
-This workspace has been generated using the "Blank Template" option in Remix IDE. It starts with only minimal configuration files, giving you full control to build your project from scratch.
+G-Nigeria MultiSig is a blockchain-based token management system built with Solidity.
 
----
+The project combines an ERC-20 token, role-based access control, blacklist functionality, and a MultiSig wallet mechanism to provide controlled and secure execution of privileged token operations.
 
-## What's Included?
+The main idea is that sensitive operations on the G-Nigeria token should not be performed by a single wallet. Instead, authorized signers must approve a transaction before the MultiSig contract can execute it.
 
-- **`remix.config.json`**: Default Remix IDE workspace configuration.
-- **`.prettierrc.json`**: Basic Prettier formatting rules for code consistency.
-
-No contract files, folders, or sample code are included.
+This project was developed and tested using Remix IDE and Solidity.
 
 ---
 
-## Getting Started
+## Project Objectives
 
-1. **Create Files & Folders**
+The project was designed to demonstrate:
 
-   - Add new Solidity files, scripts, or folders as needed for your project.
-   - You can organize your workspace structure in any way you like.
+- ERC-20 token creation and management
+- - Role-based access control
+  - - Governor-controlled token operations
+    - - Address blacklisting
+      - - Token minting and burning
+        - - Token transfers and approvals
+          - - Multi-signature transaction approval
+            - - Secure execution of privileged operations
+             
+              - ---
 
-2. **Setup Project Settings** (Optional)
+              ## Architecture
 
-   - Modify `remix.config.json` or add additional configuration files as your project grows.
+              The project contains two main smart contracts:
 
-3. **Write & Compile Smart Contracts**
+              ### 1. G-Nigeria (`G-Nigeria.sol`)
 
-   - Use the **Solidity Compiler** and **Deploy & Run Transactions** plugins (available in Remix IDE's left sidebar) to develop and test your contracts.
+              The G-Nigeria contract is an ERC-20 token contract.
 
-4. **(Optional) Initialize Git**
+              It uses OpenZeppelin's:
 
-   - If you checked "Initialize as a Git repository" during workspace creation, you can start committing your code immediately.
+              - ÈRC20
+              - 
+- ÀccessControl
+- 
 
----
+The contract has two important roles:
 
-## Useful Resources
+### Governor Role
 
-- [Remix IDE Documentation](https://remix-ide.readthedocs.io/)
-- [Solidity Language Documentation](https://docs.soliditylang.org/)
-- [Remix IDE Community Forum](https://forum.remix.ethereum.org/)
+The Governor role is responsible for privileged token-management operations such as:
 
----
+- Minting tokens
+- - Adding addresses to the blacklist
+  - - Removing addresses from the blacklist
+   
+    - ### Default Admin Role
+   
+    - The deployer receives the `DEFAULT_ADMIN_ROLE`.
+   
+    - The admin is responsible for managing role permissions through OpenZeppelin's AccessControl system.
+   
+    - ---
 
-Happy coding! 🚀 
+    ## 2. G-Nigeria MultiSig (`G-NigeriaMultisig.sol`)
 
-_Remix IDE Team_
+    The MultiSig contract is designed to prevent a single signer from executing sensitive operations alone.
+
+    Multiple authorized signers are configured when the MultiSig contract is deployed.
+
+    A transaction follows this process:
+
+    ```text
+    Submit Transaction
+
+    Signer 1 Approves
+
+    Signer 2 Approves
+
+    Required Approvals Reached
+
+    Execute Transaction
+
+    G-Nigeria Contract Performs Action
+
+
+    ## Deployed contract addresses for testing
+
+ 0xAFB353a10EF4e3707AfC6f8cF4C147341a5aB253
+g-nigeria deployed contract address
+
+0x3b814bE3e1c7Cd963c8D46a7f897c3bAeab0A7b0
+multisig contract address   
+
 
